@@ -114,6 +114,28 @@ function initialize()
 	texture.format = THREE.RGBFormat;
 	let material1 = new THREE.MeshBasicMaterial( { map: texture } );
 	
+	AFRAME.registerComponent('vidhandler', {
+  // ...
+  init: function () {
+    // Set up initial state and variables.
+    this.toggle = false;
+    this.video = document.querySelector("#video")
+    this.video.pause();
+  },
+  tick:function(){
+    
+if(this.el.object3D.visible == true){
+  if(!this.toggle){
+     this.toggle = true;
+     this.video.play();
+    }
+  }else{
+  this.toggle = false;
+    this.video.pause();
+    }
+  }
+});
+	
 	mesh1 = new THREE.Mesh( geometry1, material1 );
 	mesh1.rotation.x = -Math.PI/2;
 	
