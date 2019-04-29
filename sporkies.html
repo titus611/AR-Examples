@@ -13,24 +13,13 @@
 	<script src="threex/threex-arbasecontrols.js"></script>
 	<script src="threex/threex-armarkercontrols.js"></script>
 	
-	<!-- add some scripts for pause and continue -->
-	 <!-- AR.js by @jerome_etienne - github: https://github.com/jeromeetienne/ar.js - info: https://medium.com/arjs/augmented-reality-in-10-lines-of-html-4e193ea9fdbf -->
-  <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
-  <!-- <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script> -->
-<!-- changed for the upstairs <script src="https://cdn.glitch.com/9631b544-341e-4e5e-a017-66f326d29bcb%2Faframe-ar.js?1556476317130"></script>  -->
-<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
-  <!-- changed for the upside <script src="https://cdn.glitch.com/9631b544-341e-4e5e-a017-66f326d29bcb%2Faframe-extras.min.js?1556476233124"></script>   -->
-  <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.4/dist/aframe-extras.min.js"></script>
-
-	<!-- copied from other git -->
-	
 </head>
 
 <body style='margin : 0px; overflow: hidden; font-family: Monospace;'>
 <!-- 
 	<iframe width="640" height="360" src="//www.youtube.com/watch?v=_wzPupbww4I" frameborder="0" allowfullscreen></iframe>
 -->
-<video id="video" autoplay loop crossOrigin="anonymous" webkit-playsinline style="display:none">
+<video id="video" loop crossOrigin="anonymous" webkit-playsinline style="display:none">
 <!--	<source src="video/sintel.ogv" type='video/ogg; codecs="theora, vorbis"'>
 	<source src="video/sintel.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
   -->
@@ -125,28 +114,6 @@ function initialize()
 	texture.magFilter = THREE.LinearFilter;
 	texture.format = THREE.RGBFormat;
 	let material1 = new THREE.MeshBasicMaterial( { map: texture } );
-	
-	AFRAME.registerComponent('markerroot1', {
-  // ...
-  init: function () {
-    // Set up initial state and variables.
-    this.toggle = false;
-    this.video = document.querySelector("#video")
-    this.video.pause();
-  },
-  tick:function(){
-    
-if(this.el.object3D.visible == true){
-  if(!this.toggle){
-     this.toggle = true;
-     this.video.play();
-    }
-  }else{
-  this.toggle = false;
-    this.video.pause();
-    }
-  }
-});
 	
 	mesh1 = new THREE.Mesh( geometry1, material1 );
 	mesh1.rotation.x = -Math.PI/2;
